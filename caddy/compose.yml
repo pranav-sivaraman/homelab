@@ -12,7 +12,7 @@ services:
       - "443:443"
       - "443:443/udp"
     volumes:
-      - /mnt/home/apps/caddy/conf:/etc/caddy
+      - /mnt/home/apps/configs/caddy/conf:/etc/caddy
       - /mnt/home/apps/caddy/site:/srv
       - /mnt/home/apps/caddy/data:/data
       - /mnt/home/apps/caddy/config:/config
