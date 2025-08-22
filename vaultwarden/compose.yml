@@ -4,7 +4,7 @@ services:
     container_name: vaultwarden
     restart: always
     environment:
-      DOMAIN: "https://passwords.praarthana.space"
+      DOMAIN: "https://vaultwarden.praarthana.space"
       SIGNUPS_ALLOWED: "true" # TODO: remove after setup
     volumes:
       - /mnt/home/apps/vaultwarden/data:/data
