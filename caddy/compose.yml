@@ -3,6 +3,7 @@ services:
     build:
       context: /mnt/home/apps/caddy
       dockerfile: Dockerfile
+    env_file: /mnt/home/apps/caddy/.env
     restart: unless-stopped
     cap_add:
       - NET_ADMIN
