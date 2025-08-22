@@ -1,0 +1,25 @@
+services:
+  caddy:
+    build:
+      context: /mnt/home/apps/caddy
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - /mnt/home/apps/caddy/conf:/etc/caddy
+      - /mnt/home/apps/caddy/site:/srv
+      - /mnt/home/apps/caddy/data:/data
+      - /mnt/home/apps/caddy/config:/config
+    networks:
+      - reverseproxy-nw
+volumes:
+  caddy_data:
+  caddy_config:
+networks:
+  reverseproxy-nw:
+    external: true
