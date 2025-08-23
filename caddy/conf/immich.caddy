@@ -1,4 +1,4 @@
-@immich host photos.praarthana.space
-handle @immich {
-    reverse_proxy http://immich
+@immich_server host photos.praarthana.space
+handle @immich_server {
+    reverse_proxy http://immich_server
 }
