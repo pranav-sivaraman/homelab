@@ -12,6 +12,7 @@ services:
       - /etc/localtime:/etc/localtime:ro
     networks:
       - reverseproxy-nw
+      - immich-network
     env_file:
       - /mnt/home/apps/configs/immich/.env
     depends_on:
@@ -28,6 +29,7 @@ services:
       test: redis-cli ping || exit 1
     networks:
       - reverseproxy-nw
+      - immich-network
     restart: always
 
   database:
@@ -42,9 +44,11 @@ services:
       - /mnt/home/apps/immich/pgData:/var/lib/postgresql/data
     networks:
       - reverseproxy-nw
+      - immich-network
     shm_size: 128mb
     restart: always
 
 networks:
   reverseproxy-nw:
     external: true
+  immich-network:
