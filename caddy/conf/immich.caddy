@@ -1,4 +1,4 @@
 @immich_server host photos.praarthana.space
 handle @immich_server {
-    reverse_proxy http://immich_server
+    reverse_proxy http://immich_server:3001
 }
