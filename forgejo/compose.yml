@@ -1,0 +1,19 @@
+services:
+  server:
+    image: codeberg.org/forgejo/forgejo:11
+    container_name: forgejo
+    environment:
+      - USER_UID=1000
+      - USER_GID=1000
+    restart: always
+    networks:
+      - forgejo
+      - reverseproxy-nw
+    volumes:
+      - /mnt/home/apps/forgejo/data:/data
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+networks:
+  forgejo:
+    external: false
+  reverseproxy-nw:
