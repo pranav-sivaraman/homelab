@@ -28,7 +28,6 @@ services:
     healthcheck:
       test: redis-cli ping || exit 1
     networks:
-      - reverseproxy-nw
       - immich-network
     restart: always
 
@@ -43,7 +42,6 @@ services:
     volumes:
       - /mnt/home/apps/immich/pgData:/var/lib/postgresql/data
     networks:
-      - reverseproxy-nw
       - immich-network
     shm_size: 128mb
     restart: always
