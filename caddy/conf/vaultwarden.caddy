@@ -1,4 +1,4 @@
 @vaultwarden host passwords.praarthana.space
 handle @vaultwarden {
-    reverse_proxy http://passwords
+    reverse_proxy http://vaultwarden
 }
