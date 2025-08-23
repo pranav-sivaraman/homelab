@@ -1,4 +1,4 @@
 @forgejo host git.praarthana.space
 handle @forgejo {
-    reverse_proxy http://forgejo
+    reverse_proxy http://forgejo:3000
 }
