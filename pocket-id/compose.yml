@@ -3,7 +3,7 @@ services:
     image: ghcr.io/pocket-id/pocket-id:v1-distroless
     restart: unless-stopped
     environment:
-      - APP_URL="https://pocket-id.praarthana.space"
+      - APP_URL=https://pocket-id.praarthana.space
       - TRUST_PROXY=true
       - PUID=1411
       - GUID=1411
