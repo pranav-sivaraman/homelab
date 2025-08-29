@@ -1,0 +1,28 @@
+services:
+  pocket-id:
+    image: ghcr.io/pocket-id/pocket-id:v1-distroless
+    restart: unless-stopped
+    environment:
+      - APP_URL="https://pocket-id.praarthana.space"
+      - TRUST_PROXY=true
+      - PUID=1411
+      - GUID=1411
+    networks:
+      - caddy
+    volumes:
+      - "/mnt/home/apps/pocket-id/data:/app/data"
+    read_only: true
+    user: "1411:1411"
+    labels:
+      caddy: whoami.example.com
+      caddy.reverse_proxy: "{{upstreams 1411}}"
+    # Optional healthcheck
+    healthcheck:
+      test: ["CMD", "/app/pocket-id", "healthcheck"]
+      interval: 1m30s
+      timeout: 5s
+      retries: 2
+      start_period: 10s
+networks:
+  caddy:
+    external: true
