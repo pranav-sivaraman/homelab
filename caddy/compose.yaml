@@ -1,6 +1,8 @@
 services:
   caddy:
     image: lucaslorentz/caddy-docker-proxy:ci-alpine
+    build:
+      dockerfile: Dockerfile
     ports:
       - 80:80
       - 443:443/tcp
@@ -9,6 +11,8 @@ services:
       - CADDY_INGRESS_NETWORKS=caddy
     networks:
       - caddy
+    labels:
+      caddy.acme_dns: "cloudflare $API_TOKEN"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./data:/data
