@@ -9,7 +9,6 @@ services:
     labels:
       caddy: passwords.praarthana.space
       caddy.reverse_proxy: "{{upstreams 80}}"
-    read_only: true
     user: "3003:3003"
     volumes:
       - /mnt/home/apps/vaultwarden/data:/data
