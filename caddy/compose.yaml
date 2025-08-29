@@ -5,8 +5,6 @@ services:
       - 80:80
       - 443:443/tcp
       - 443:443/udp
-    read_only: true
-    user: "80:80"
     environment:
       - CADDY_INGRESS_NETWORKS=caddy
     networks:
