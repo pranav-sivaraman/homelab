@@ -14,7 +14,7 @@ services:
     read_only: true
     user: "1411:1411"
     labels:
-      caddy: whoami.example.com
+      caddy: pocket-id.praarthana.space
       caddy.reverse_proxy: "{{upstreams 1411}}"
     # Optional healthcheck
     healthcheck:
