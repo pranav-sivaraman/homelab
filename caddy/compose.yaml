@@ -1,24 +1,24 @@
+name: caddy
+networks:
+  caddy:
+    external: true
+    name: caddy
 services:
   caddy:
-    image: homeall/caddy-reverse-proxy-cloudflare:latest
+    environment:
+      - CADDY_INGRESS_NETWORKS=caddy
+    build: Dockerfile
+    labels:
+      caddy.acme_dns: cloudflare $API_TOKEN
+    networks:
+      - caddy
     ports:
       - 80:80
       - 443:443/tcp
       - 443:443/udp
-    environment:
-      - CADDY_INGRESS_NETWORKS=caddy
-    networks:
-      - caddy
-    user: "568:568"
-    labels:
-      caddy.acme_dns: "cloudflare $API_TOKEN"
+    restart: unless-stopped
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - ./data:/data
-    restart: unless-stopped
-networks:
-  caddy:
-    external: true
-
+      - /mnt/home/apps/caddy/data:/data
 volumes:
   data: {}
