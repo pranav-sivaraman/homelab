@@ -1,19 +1,20 @@
-services:
-  vaultwarden:
-    image: vaultwarden/server:latest
-    container_name: vaultwarden
-    restart: always
-    environment:
-      DOMAIN: "https://passwords.praarthana.space"
-      SIGNUPS_ALLOWED: "true" # TODO: remove after setup
-    labels:
-      caddy: passwords.praarthana.space
-      caddy.reverse_proxy: "{{upstreams 80}}"
-    user: "3003:3003"
-    volumes:
-      - /mnt/home/apps/vaultwarden/data:/data
-    networks:
-      - caddy
+name: vaultwarden
 networks:
   caddy:
     external: true
+services:
+  vaultwarden:
+    container_name: vaultwarden
+    environment:
+      DOMAIN: "https://passwords.praarthana.space"
+      SIGNUPS_ALLOWED: "false"
+    image: vaultwarden/server:latest
+    labels:
+      caddy: passwords.praarthana.space
+      caddy.reverse_proxy: "{{upstreams 80}}"
+    networks:
+      - caddy
+    restart: always
+    user: "568:568"
+    volumes:
+      - /mnt/home/apps/vaultwarden/data:/data
