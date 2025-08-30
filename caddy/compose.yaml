@@ -6,9 +6,7 @@ services:
   caddy:
     environment:
       - CADDY_INGRESS_NETWORKS=caddy
-    build:
-      context: .
-      dockerfile: ./Dockerfile
+    image: homeall/caddy-reverse-proxy-cloudflare:latest
     labels:
       caddy.acme_dns: cloudflare $API_TOKEN
     networks:
