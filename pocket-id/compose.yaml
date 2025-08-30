@@ -1,28 +1,28 @@
+name: pocket-id
+networks:
+  caddy:
+    external: true
 services:
   pocket-id:
-    image: ghcr.io/pocket-id/pocket-id:v1-distroless
-    restart: unless-stopped
     environment:
       - APP_URL=https://pocket-id.praarthana.space
       - TRUST_PROXY=true
       - PUID=568
       - GUID=568
-    networks:
-      - caddy
-    volumes:
-      - "/mnt/home/apps/pocket-id/data:/app/data"
-    read_only: true
-    user: "568:568"
-    labels:
-      caddy: pocket-id.praarthana.space
-      caddy.reverse_proxy: "{{upstreams 1411}}"
-    # Optional healthcheck
     healthcheck:
       test: ["CMD", "/app/pocket-id", "healthcheck"]
       interval: 1m30s
       timeout: 5s
       retries: 2
       start_period: 10s
-networks:
-  caddy:
-    external: true
+    image: ghcr.io/pocket-id/pocket-id:v1-distroless
+    labels:
+      caddy: pocket-id.praarthana.space
+      caddy.reverse_proxy: "{{upstreams 1411}}"
+    networks:
+      - caddy
+    read_only: true
+    restart: unless-stopped
+    user: "568:568"
+    volumes:
+      - "/mnt/home/apps/pocket-id/data:/app/data"

@@ -1,20 +1,22 @@
+name: forgejo
+networks:
+  caddy:
+    external: true
 services:
   server:
-    image: codeberg.org/forgejo/forgejo:11
     container_name: forgejo
     environment:
-      - USER_UID=3002
-      - USER_GID=3002
-    restart: always
+      - USER_UID=568
+      - USER_GID=568
+    image: codeberg.org/forgejo/forgejo:11
     labels:
       caddy: git.praarthana.space
       caddy.reverse_proxy: "{{upstreams 3000}}"
     networks:
       - caddy
+    restart: always
+    user: "568:568"
     volumes:
       - /mnt/home/apps/forgejo/data:/data
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
-networks:
-  caddy:
-    external: true
