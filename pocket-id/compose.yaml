@@ -5,14 +5,14 @@ services:
     environment:
       - APP_URL=https://pocket-id.praarthana.space
       - TRUST_PROXY=true
-      - PUID=1411
-      - GUID=1411
+      - PUID=568
+      - GUID=568
     networks:
       - caddy
     volumes:
       - "/mnt/home/apps/pocket-id/data:/app/data"
     read_only: true
-    user: "1411:1411"
+    user: "568:568"
     labels:
       caddy: pocket-id.praarthana.space
       caddy.reverse_proxy: "{{upstreams 1411}}"
