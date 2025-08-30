@@ -6,7 +6,9 @@ services:
   caddy:
     environment:
       - CADDY_INGRESS_NETWORKS=caddy
-    build: ./Dockerfile
+    build:
+      context: .
+      dockerfile: ./Dockerfile
     labels:
       caddy.acme_dns: cloudflare $API_TOKEN
     networks:
