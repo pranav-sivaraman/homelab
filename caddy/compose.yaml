@@ -2,7 +2,6 @@ name: caddy
 networks:
   caddy:
     external: true
-    name: caddy
 services:
   caddy:
     environment:
