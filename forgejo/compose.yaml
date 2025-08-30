@@ -15,7 +15,6 @@ services:
     networks:
       - caddy
     restart: always
-    user: "568:568"
     volumes:
       - /mnt/home/apps/forgejo/data:/data
       - /etc/timezone:/etc/timezone:ro
