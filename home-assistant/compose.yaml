@@ -7,7 +7,6 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - /run/dbus:/run/dbus:ro
     restart: unless-stopped
-    user: "1411:1411"
     networks:
     - caddy
     labels:
