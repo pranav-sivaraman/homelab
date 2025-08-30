@@ -1,15 +1,8 @@
 name: immich
-networks:
-  caddy:
-    external: true
+
 services:
   immich-server:
     container_name: immich_server
-    depends_on:
-      - redis
-      - database
-    healthcheck:
-      disable: false
     image: ghcr.io/immich-app/immich-server:release
     # extends:
     #   file: hwaccel.transcoding.yml
@@ -17,12 +10,19 @@ services:
     labels:
       caddy: photos.praarthana.space
       caddy.reverse_proxy: "{{upstreams 80}}"
-    networks:
-      - caddy
-    restart: always
     volumes:
       - /mnt/home/apps/immich/data:/data
       - /etc/localtime:/etc/localtime:ro
+    env_file:
+      - .env
+    depends_on:
+      - redis
+      - database
+    restart: always
+    healthcheck:
+      disable: false
+    networks:
+      - caddy
 
   redis:
     container_name: immich_redis
@@ -50,3 +50,6 @@ services:
 
 volumes:
   model-cache:
+networks:
+  caddy:
+    external: true
