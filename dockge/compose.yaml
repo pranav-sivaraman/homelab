@@ -1,0 +1,22 @@
+services:
+  dockge:
+    image: louislam/dockge:1
+    restart: unless-stopped
+    networks:
+      - caddy
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./data:/app/data
+      # Stacks Directory
+      # ⚠️ READ IT CAREFULLY. If you did it wrong, your data could end up writing into a WRONG PATH.
+      # ⚠️ 1. FULL path only. No relative path (MUST)
+      # ⚠️ 2. Left Stacks Path === Right Stacks Path (MUST)
+      - /home/truenas_admin/homelab:/home/truenas_admin/homelab
+    environment:
+      - DOCKGE_STACKS_DIR=/home/truenas_admin/homelab
+    labels:
+      caddy: dockge.praarthana.space
+      caddy.reverse_proxy: "{{upstreams 5001}}"
+networks:
+  caddy:
+    external: true
