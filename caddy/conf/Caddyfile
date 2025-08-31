@@ -33,6 +33,11 @@ https://*.praarthana.space {
       reverse_proxy http://pocket-id:1411
     }
 
+    @home_assistant host home-assistant.praarthana.space
+    handle @home_assistant {
+      reverse_proxy http://homeassistant:8123
+    }
+
     @nas host nas.praarthana.space
     handle @nas {
       reverse_proxy http://192.168.1.2:8080

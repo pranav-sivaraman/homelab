@@ -1,17 +1,15 @@
+name: home-assistant
+networks:
+  caddy:
+    external: true
 services:
   homeassistant:
     container_name: homeassistant
     image: "ghcr.io/home-assistant/home-assistant:stable"
     volumes:
-      - /mnt/home/apps/home-assistant/config:/config
+      - ./config:/config
       - /etc/localtime:/etc/localtime:ro
       - /run/dbus:/run/dbus:ro
     restart: unless-stopped
     networks:
     - caddy
-    labels:
-      caddy: home.praarthana.space
-      caddy.reverse_proxy: "{{upstreams 8123}}"
-networks:
-  caddy:
-    external: true
