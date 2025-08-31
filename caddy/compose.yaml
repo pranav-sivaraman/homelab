@@ -6,6 +6,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    env_file: .env
     restart: unless-stopped
     cap_add:
       - NET_ADMIN
