@@ -4,7 +4,7 @@ networks:
 services:
   caddy:
     build:
-      context: $PWD
+      context: .
       dockerfile: Dockerfile
     restart: unless-stopped
     cap_add:
@@ -14,8 +14,8 @@ services:
       - "443:443"
       - "443:443/udp"
     volumes:
-      - $PWD/conf:/etc/caddy
-      - $PWD/site:/srv
+      - ./conf:/etc/caddy
+      - ./site:/srv
       - /mnt/home/apps/caddy/data:/data
       - /mnt/home/apps/caddy/config:/config
     networks:
