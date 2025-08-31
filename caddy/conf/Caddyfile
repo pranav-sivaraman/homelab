@@ -33,4 +33,13 @@ https://*.praarthana.space {
       reverse_proxy http://pocket-id:1411
     }
 
+    @nas host nas.praarthana.space
+    handle @nas {
+      reverse_proxy http://192.168.1.2:8080
+    }
+
+    @router host router.praarthana.space
+    handle @router {
+      reverse_proxy http://192.168.1.1:80
+    }
 }
