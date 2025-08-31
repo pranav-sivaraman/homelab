@@ -17,8 +17,10 @@ services:
       start_period: 10s
     image: ghcr.io/pocket-id/pocket-id:v1-distroless
     labels:
-      caddy: pocket-id.praarthana.space
-      caddy.reverse_proxy: "{{upstreams 1411}}"
+      caddy_0: pocket-id.praarthana.space
+      caddy_0.reverse_proxy: "{{upstreams 1411}}"
+      caddy_1: nas.praarthana.space
+      caddy_1.reverse_proxy: http://192.168.1.2:8080
     networks:
       - caddy
     read_only: true
