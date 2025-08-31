@@ -9,8 +9,8 @@ services:
     image: homeall/caddy-reverse-proxy-cloudflare:latest
     labels:
       caddy.acme_dns: cloudflare $API_TOKEN
-      caddy_0: router.praarthana.space
-      caddy_0.reverse_proxy: http://192.168.1.1:80
+      caddy: router.praarthana.space
+      caddy.reverse_proxy: http://192.168.1.1:80
       caddy_1: nas.praarthana.space
       caddy_1.reverse_proxy: http://192.168.1.2:8080
     networks:
