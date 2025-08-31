@@ -10,7 +10,7 @@ services:
     labels:
       caddy.acme_dns: cloudflare $API_TOKEN
       caddy_0: nas.praarthana.space
-      caddy_0.reverse_proxy: 192.168.1.2:8080
+      caddy_0.reverse_proxy: "{{192.168.1.2 8080}}"
     networks:
       - caddy
     ports:
