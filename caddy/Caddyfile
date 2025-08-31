@@ -1,0 +1,3 @@
+router.praarthana.space {
+  reverse_proxy 192.168.1.1:80
+}
