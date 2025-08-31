@@ -19,7 +19,8 @@ services:
       - /mnt/home/apps/caddy/data:/data
       - /mnt/home/apps/caddy/config:/config
     networks:
-      - caddy
+      caddy:
+        ipv4_address: 172.16.1.2
 volumes:
   caddy_data:
   caddy_config:

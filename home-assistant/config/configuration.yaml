@@ -8,4 +8,4 @@ frontend:
 http:
   use_x_forwarded_for: true
   trusted_proxies:
-    - caddy
+    - 172.16.1.2
