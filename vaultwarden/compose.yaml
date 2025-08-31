@@ -9,9 +9,6 @@ services:
       DOMAIN: "https://passwords.praarthana.space"
       SIGNUPS_ALLOWED: "false"
     image: vaultwarden/server:latest
-    labels:
-      caddy: passwords.praarthana.space
-      caddy.reverse_proxy: "{{upstreams 80}}"
     networks:
       - caddy
     restart: always

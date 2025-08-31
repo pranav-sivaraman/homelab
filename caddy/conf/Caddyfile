@@ -28,4 +28,9 @@ https://*.praarthana.space {
       reverse_proxy http://immich_server
     }
 
+    @pocket_id host pocket-id.praarthana.space
+    handle @pocket_id {
+      reverse_proxy http://pocket-id:1411
+    }
+
 }
