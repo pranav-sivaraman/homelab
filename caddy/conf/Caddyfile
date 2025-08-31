@@ -1,0 +1,31 @@
+{
+    skip_install_trust
+}
+
+https://*.praarthana.space {
+    tls {
+      dns cloudflare api_key {env.CF_API_TOKEN}
+      resolvers 1.1.1.1
+    }
+
+    @vaultwarden host passwords.praarthana.space
+    handle @vaultwarden {
+      reverse_proxy http://vaultwarden
+    }
+
+    @dockge host dockge.praarthana.space
+    handle @dockge {
+      reverse_proxy http://dockge:5001
+    }
+
+    @forgejo host git.praarthana.space
+    handle @forgejo {
+      reverse_proxy http://forgejo:3000
+    }
+
+    @immich_server host photos.praarthana.space
+    handle @immich_server {
+      reverse_proxy http://immich_server
+    }
+
+}

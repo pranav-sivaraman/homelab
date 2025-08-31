@@ -7,9 +7,6 @@ services:
     environment:
       - DOCKGE_STACKS_DIR=/home/truenas_admin/homelab
     image: louislam/dockge:1
-    labels:
-      caddy: dockge.praarthana.space
-      caddy.reverse_proxy: "{{upstreams 5001}}"
     networks:
       - caddy
     restart: unless-stopped

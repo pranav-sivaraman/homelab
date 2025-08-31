@@ -9,9 +9,6 @@ services:
       - USER_UID=568
       - USER_GID=568
     image: codeberg.org/forgejo/forgejo:11
-    labels:
-      caddy: git.praarthana.space
-      caddy.reverse_proxy: "{{upstreams 3000}}"
     networks:
       - caddy
     restart: always
