@@ -6,12 +6,10 @@ services:
   caddy:
     environment:
       - CADDY_INGRESS_NETWORKS=caddy
+      - CADDY_DOCKER_CADDYFILE_PATH=/config/Caddyfile
     image: homeall/caddy-reverse-proxy-cloudflare:latest
     labels:
       caddy.acme_dns: cloudflare $API_TOKEN
-      caddy: router.praarthana.space
-      caddy.reverse_proxy: "{{upstreams 80}}"
-      caddy.upstreams: 192.168.1.1:80
     networks:
       - caddy
     ports:
@@ -20,6 +18,7 @@ services:
       - 443:443/udp
     restart: unless-stopped
     volumes:
+      - ./config:/config
       - /var/run/docker.sock:/var/run/docker.sock
       - /mnt/home/apps/caddy/data:/data
 volumes:
