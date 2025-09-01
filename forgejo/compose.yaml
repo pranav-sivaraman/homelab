@@ -8,6 +8,7 @@ services:
     environment:
       - USER_UID=568
       - USER_GID=568
+      - DOMAIN=https://git.praarthana.space
     image: codeberg.org/forgejo/forgejo:11
     networks:
       - caddy
